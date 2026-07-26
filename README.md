@@ -58,7 +58,7 @@ Every request passes through a multi-stage security pipeline before reaching the
 ## 🖼️ Demo
 
 <p align="center">
-  <img src="Screenshot/pii-masking-demo.png" alt="PII Masking Demo — Gateway Playground" width="850"/>
+  <img src="Screenshot/Снимок экрана 2026-07-26 182139.png" alt="PII Masking Demo — Gateway Playground" width="850"/>
 </p>
 
 <p align="center"><em>PII Masking in action: emails and credit card numbers are automatically replaced with <code>&lt;EMAIL_1&gt;</code> and <code>&lt;CREDIT_CARD_1&gt;</code> before reaching the LLM.</em></p>

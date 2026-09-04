@@ -143,18 +143,29 @@ class TestGuardrailEdgeCases:
     These tests are written with genuine assertions to document real system limitations.
     """
 
-    def test_edge_case_credit_card_unusual_separators(self, pii_masker: PIIMasker) -> None:
+    @pytest.mark.parametrize(
+        "card_number",
+        [
+            "4532.1122.3344.5566",
+            "4532/1122/3344/5566",
+        ],
+    )
+    def test_edge_case_credit_card_dot_or_slash_separators(
+        self,
+        pii_masker: PIIMasker,
+        card_number: str,
+    ) -> None:
+        r"""
+        Credit card formatted with dot or slash separators.
+        The current regex r"\b(?:\d[ \-]?){12,18}\d\b" only supports space and hyphen.
         """
-        Credit card formatted with dot separators (e.g., 4532.1122.3344.5566).
-        The current regex r"\\b(?:\\d[ \\-]?){12,18}\\d\\b" only supports space and hyphen.
-        """
-        raw_text = "Transaction card reference: 4532.1122.3344.5566 on terminal 1."
+        raw_text = f"Transaction card reference: {card_number} on terminal 1."
         masked_text, was_masked = pii_masker.mask(raw_text)
 
         # Assert card should be detected and masked
-        assert was_masked is True, "Dot-separated credit card number was not detected"
+        assert was_masked is True, f"Card with separators was not detected: {card_number}"
         assert "<CREDIT_CARD_1>" in masked_text
-        assert "4532.1122.3344.5566" not in masked_text
+        assert card_number not in masked_text
 
     def test_edge_case_unlisted_adversarial_jailbreak(
         self,

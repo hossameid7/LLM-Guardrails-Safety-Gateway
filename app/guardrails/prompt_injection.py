@@ -83,6 +83,21 @@ _STRUCTURAL_PATTERNS: List[Tuple[str, re.Pattern[str]]] = [
         ),
     ),
     (
+        "instruction_override",
+        re.compile(
+            r"\b(?:ignore|disregard|forget|bypass|override)\s+(?:all\s+)?(?:previous\s+|prior\s+|above\s+)?(?:instructions?|directives?|rules?|prompts?)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
+        "unrestricted_bypass",
+        re.compile(
+            r"\b(?:act|operate|simulate|run)\s+as\s+(?:an?\s+)?(?:unrestricted|unbounded|jailbroken)\b|"
+            r"\bwithout\s+(?:boundaries|restrictions|limits|safety)\b",
+            re.IGNORECASE,
+        ),
+    ),
+    (
         "instruction_leak",
         re.compile(
             r"\b(?:list\s+all\s+rules|tell\s+me\s+your\s+rules|"

@@ -34,7 +34,7 @@ _PII_PATTERNS: List[Tuple[str, re.Pattern[str]]] = [
     (
         "CREDIT_CARD",
         re.compile(
-            r"\b(?:\d[ \-]?){12,18}\d\b"
+            r"\b(?:\d[ \.\-\/]?){12,18}\d\b"
         ),
     ),
     # US Social Security Number

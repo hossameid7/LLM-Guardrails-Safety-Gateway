@@ -122,8 +122,8 @@ Every request passes through a multi-stage security pipeline before reaching the
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/your-username/llm-guardrails-gateway.git
-cd llm-guardrails-gateway
+git clone https://github.com/hossameid7/LLM-Guardrails-Safety-Gateway.git
+cd LLM-Guardrails-Safety-Gateway
 
 pip install -r requirements.txt
 ```
@@ -399,9 +399,3 @@ The gateway tracks real-time metrics accessible at `GET /api/v1/metrics`:
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-
----
-
-<p align="center">
-  Built with ❤️ using FastAPI, LangChain, ChromaDB & Groq
-</p>
